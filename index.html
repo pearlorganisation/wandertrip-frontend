@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-T86CPRJX47');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>WanderTrip - AI-Powered Travel Planning</title>
+  <link rel="icon" type="image/svg+xml" href="/wtlogo.png" />
+  <meta name="description"
+    content="Experience AI-powered travel planning with WanderTrip. Get personalized itineraries, discover hidden gems, and book your perfect trip all in one place." />
+  <meta name="keywords"
+    content="travel planning, AI travel, personalized itinerary, travel destinations, trip planner" />
+  <meta name="author" content="WanderTrip" />
+  <meta property="og:title" content="WanderTrip - AI-Powered Travel Planning" />
+  <meta property="og:description"
+    content="Experience AI-powered travel planning with WanderTrip. Get personalized itineraries, discover hidden gems, and book your perfect trip all in one place." />
+  <meta property="og:image" content="/og-image.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="WanderTrip - AI-Powered Travel Planning" />
+  <meta name="twitter:description"
+    content="Experience AI-powered travel planning with WanderTrip. Get personalized itineraries, discover hidden gems, and book your perfect trip all in one place." />
+  <link rel="canonical" href="https://wandertrip.in" />
+  
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+  
+  <!-- iOS specific -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="WanderTrip" />
+  <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+  
+  <!-- Add apple splash screens -->
+  <link rel="apple-touch-startup-image" href="/icons/icon-512x512.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" />
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#4f46e5" />
+  
+  <!-- Disable tap highlight on iOS -->
+  <meta name="msapplication-tap-highlight" content="no" />
+  
+  <base href="/" />
+  
+  <style>
+    /* App-like overscroll behavior */
+    html {
+      overscroll-behavior: none;
+    }
+    
+    /* Hide scrollbars for app-like feel */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    
+    /* App-like selection color */
+    ::selection {
+      background-color: rgba(79, 70, 229, 0.2);
+    }
+    
+    /* Status bar padding for iOS devices with notch */
+    @supports (padding-top: env(safe-area-inset-top)) {
+      .safe-area-top {
+        padding-top: env(safe-area-inset-top);
+      }
+      .safe-area-bottom {
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  
+  <!-- Add installation prompt for PWA -->
+  <script>
+    // Initialize deferredPrompt for use later to show browser install prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later
+      deferredPrompt = e;
+      
+      // Show the install button if not already installed
+      // You might need to create an install button in your app
+      const installBtn = document.getElementById('install-button');
+      if (installBtn) {
+        installBtn.style.display = 'block';
+        
+        installBtn.addEventListener('click', () => {
+          // Show the install prompt
+          deferredPrompt.prompt();
+          // Wait for the user to respond to the prompt
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('User accepted the install prompt');
+            } else {
+              console.log('User dismissed the install prompt');
+            }
+            // We no longer need the prompt. Clear it up
+            deferredPrompt = null;
+            
+            // Hide the install button
+            installBtn.style.display = 'none';
+          });
+        });
+      }
+    });
+    
+    // Disable pull-to-refresh for better app-like experience
+    document.addEventListener('touchmove', function(e) {
+      if (e.touches.length > 1) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+  </script>
+</body>
+
+</html>

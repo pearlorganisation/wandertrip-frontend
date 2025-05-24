@@ -1,0 +1,69 @@
+
+{
+  "name": "WanderTrip - AI-Powered Travel Planning",
+  "short_name": "WanderTrip",
+  "description": "Experience AI-powered travel planning with WanderTrip. Get personalized itineraries, discover hidden gems, and book your perfect trip all in one place.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#4f46e5",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Plan New Trip",
+      "short_name": "New Trip",
+      "description": "Start planning a new trip",
+      "url": "/trip-planner",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "My Itineraries",
+      "short_name": "Itineraries",
+      "description": "View your saved itineraries",
+      "url": "/itinerary",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "screenshots": [
+    {
+      "src": "/screenshots/mobile-home.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "platform": "narrow",
+      "label": "Home screen of WanderTrip"
+    },
+    {
+      "src": "/screenshots/mobile-itinerary.jpg",
+      "sizes": "1080x1920", 
+      "type": "image/jpeg",
+      "platform": "narrow",
+      "label": "Itinerary view in WanderTrip"
+    }
+  ],
+  "share_target": {
+    "action": "/share-target",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "splash_pages": null
+}
