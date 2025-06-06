@@ -10,6 +10,7 @@ import axios from "axios";
 import { useAppDispatch } from "@/hooks/dispatchHooks";
 import {
   ForgetPassword,
+  googleLogin,
   LoginUser,
   registerUser,
 } from "@/lib/redux/Action/authAction";
@@ -255,10 +256,8 @@ const Login = () => {
                 variant="outline"
                 className="flex items-center justify-center py-3"
                 onClick={() => {
-                  toast({
-                    title: "Demo Mode",
-                    description: "Social login is not available in demo mode.",
-                  });
+                  window.location.href =
+                    "http://localhost:5000/api/v1/auth/google"; // redirects to backend OAuth route
                 }}
               >
                 <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
@@ -287,8 +286,8 @@ const Login = () => {
                 className="flex items-center justify-center py-3"
                 onClick={() => {
                   toast({
-                    title: "Demo Mode",
-                    description: "Social login is not available in demo mode.",
+                    // title: "Demo Mode",
+                    // description: "Social login is not available in demo mode.",
                   });
                 }}
               >

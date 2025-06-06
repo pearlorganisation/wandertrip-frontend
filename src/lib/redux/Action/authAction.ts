@@ -140,8 +140,41 @@ export const getProfile = createAsyncThunk(
           "Content-Type": "application/json",
         },
       };
-      const res = await axiosInstance.get(
-        "http://localhost:5000/api/v1/users/profile",
+      const res = await axiosInstance.get("/api/v1/users/profile", config);
+      return res.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);
+
+export const changePaas = createAsyncThunk(
+  "change",
+  async (
+    {
+      currentPassword,
+      newPassword,
+      confirmNewPassword,
+    }: {
+      currentPassword: string;
+      newPassword: string;
+      confirmNewPassword: string;
+    },
+    thunkAPI
+  ) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const res = await axiosInstance.post(
+        "/api/v1/users/change-password",
+        {
+          currentPassword,
+          newPassword,
+          confirmNewPassword,
+        },
         config
       );
       return res.data;
@@ -168,3 +201,23 @@ export const logout = createAsyncThunk("logout/user", async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.response?.data || error.message);
   }
 });
+
+// google auth
+
+export const googleLogin = createAsyncThunk(
+  "google/login",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axiosInstance.get("/api/v1/auth/google");
+      console.log("data", data);
+      return data;
+    } catch (error: any) {
+      const errorMessage =
+        error?.response?.data?.message || "Google login failed";
+
+      toast.error(errorMessage); // ✅ show toast
+
+      return rejectWithValue(errorMessage); // ✅ dispatch error to reducer
+    }
+  }
+);

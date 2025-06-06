@@ -1,8 +1,7 @@
-
 import { apiClient } from "../client";
 
 export interface Destination {
-  id: string;
+  _id: string;
   name: string;
   location: string;
   image: string;
@@ -18,7 +17,7 @@ export const destinationService = {
    * Get all destinations
    */
   getDestinations: async (): Promise<Destination[]> => {
-    return apiClient.get<Destination[]>('/destinations');
+    return apiClient.get<Destination[]>("/destinations");
   },
 
   /**

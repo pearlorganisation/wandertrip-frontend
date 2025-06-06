@@ -45,7 +45,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
-  const users = useAppSelector((state) => state.usersProfile.user);
+  const users = useAppSelector((state) => state.auth.user);
 
   const [shareInProgress, setShareInProgress] = useState<boolean>(false);
   const [shareType, setShareType] = useState<string>("");

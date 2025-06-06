@@ -1,8 +1,10 @@
 // src/redux/auth/authSlice.ts
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  changePaas,
   ForgetPassword,
   getProfile,
+  googleLogin,
   LoginUser,
   logout,
   registerUser,
@@ -102,6 +104,31 @@ const authSlice = createSlice({
       .addCase(logout.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
+      })
+      .addCase(changePaas.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+      })
+      .addCase(changePaas.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(changePaas.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = null;
+      })
+
+      .addCase(googleLogin.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+      })
+      .addCase(googleLogin.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(googleLogin.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = null;
       });
   },
 });
